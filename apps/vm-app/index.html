@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles.css">
+  <base href="/">
+  <title>vm-app</title>
+</head>
+
+<body>
+  <div id="outlet"></div>
+
+  <script type="module">
+    // eslint-disable-next-line import/no-unresolved
+    import {Router} from 'https://unpkg.com/@vaadin/router';
+    import {routes} from './src/app/routes.ts';
+
+    const router = new Router(document.getElementById('outlet'));
+    router.setRoutes(routes);
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
