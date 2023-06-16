@@ -7,6 +7,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: vm
     volumes:
-      - /data/pg:/var/lib/postgresql/data
+      - ~/ozee-vm-app-data/pg:/var/lib/postgresql/data
     ports:
       - 5432:5432
