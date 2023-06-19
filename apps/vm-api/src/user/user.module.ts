@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './entities/user.entity';
 import { UserController } from './user.controller';
-import { ListingEntity } from '../listing/entities/listing.entity';
+import { InMemoryDBModule } from '@nestjs-addons/in-memory-db';
+import { ListingModule } from '../listing/listing.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserEntity, ListingEntity]),
+    ListingModule,
+    InMemoryDBModule.forFeature('user'),
   ],
-  providers: [UserService],
   controllers: [UserController],
-  exports: [UserService],
+  exports: [InMemoryDBModule.forFeature('user')]
 })
 export class UserModule {}

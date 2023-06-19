@@ -37,8 +37,7 @@
         "production": {
           "buildTarget": "vm-api:build:production"
         }
-      },
-      "dependsOn": ["docker-compose"]
+      }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
@@ -46,9 +45,6 @@
       "options": {
         "lintFilePatterns": ["apps/vm-api/**/*.ts"]
       }
-    },
-    "docker-compose": {
-      "command": "docker-compose -f apps/vm-api/docker-compose.yml up -d"
     }
   },
   "tags": []

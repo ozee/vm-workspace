@@ -4,9 +4,10 @@ import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { ClsService } from 'nestjs-cls';
 import { AUTH_KEY } from './auth.decorator';
-import { UserService } from '../user/user.service';
 import { AuthClsStore } from './auth-cls.store';
 import { AuthTokenPayload } from './dto/auth-token.payload';
+import { InMemoryDBService, InjectInMemoryDBService } from '@nestjs-addons/in-memory-db';
+import { UserEntity } from '../user/entities/user.entity';
 
 type RequestWithAuth = Request & { headers: { authorization: string } };
 
@@ -15,7 +16,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
     private configService: ConfigService,
-    private userService: UserService,
+    @InjectInMemoryDBService('user')
+    private userService: InMemoryDBService<UserEntity>,
     private authClsStore: ClsService<AuthClsStore>,
     private reflector: Reflector
   ) {}
@@ -41,7 +43,7 @@ export class AuthGuard implements CanActivate {
       const payload: AuthTokenPayload = await this.jwtService.verifyAsync(token, {
         secret: this.configService.get('AUTH_SECRET'),
       });
-      const user = await this.userService.findOneById(payload.id);
+      const user = this.userService.get(payload.id);
 
       if (!user) {
         throw new UnauthorizedException();

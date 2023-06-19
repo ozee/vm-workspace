@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ListingService } from './listing.service';
 import { ListingController } from './listing.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ListingEntity } from './entities/listing.entity';
+import { InMemoryDBModule } from '@nestjs-addons/in-memory-db';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ListingEntity])],
+  imports: [InMemoryDBModule.forFeature('listing')],
   controllers: [ListingController],
-  providers: [ListingService],
+  exports: [InMemoryDBModule.forFeature('listing')]
 })
 export class ListingModule {}

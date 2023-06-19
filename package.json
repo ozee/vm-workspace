@@ -7,6 +7,7 @@
   },
   "private": true,
   "dependencies": {
+    "@nestjs-addons/in-memory-db": "^3.0.3",
     "@nestjs/common": "^9.1.1",
     "@nestjs/config": "^2.3.3",
     "@nestjs/core": "^9.1.1",
@@ -14,7 +15,6 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.1.1",
     "@nestjs/swagger": "^6.3.0",
-    "@nestjs/typeorm": "^9.0.1",
     "@vaadin/router": "^1.7.5",
     "axios": "^1.0.0",
     "bcrypt": "^5.1.0",
@@ -22,11 +22,9 @@
     "class-validator": "^0.14.0",
     "lit": "^2.7.5",
     "nestjs-cls": "^3.4.0",
-    "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "tslib": "^2.3.0",
-    "typeorm": "^0.3.16"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@nestjs/schematics": "^9.1.0",

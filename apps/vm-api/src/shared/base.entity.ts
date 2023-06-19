@@ -1,16 +1,6 @@
-import { PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { InMemoryDBEntity } from "@nestjs-addons/in-memory-db";
 
-export class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @CreateDateColumn({
-    type: 'timestamp with time zone',
-  })
-  createdAt: Date;
-
-  @UpdateDateColumn({
-    type: 'timestamp with time zone',
-  })
-  updatedAt: Date;
+export interface BaseEntity extends InMemoryDBEntity {
+  createdAt?: Date;
+  updatedAt?: Date;
 }

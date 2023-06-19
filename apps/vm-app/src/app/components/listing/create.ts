@@ -64,6 +64,7 @@ export class VmListingCreate extends TailwindElement(style) {
       body: JSON.stringify(data),
     }).then((response) => response.json()).then((data) => {
       this.requestUpdate();
+      location.href = `/listing/${data.id}`;
     });
   }
 
